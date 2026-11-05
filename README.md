@@ -20,3 +20,9 @@ Boost 1.81 的 `boost::context` **没有 loongarch64 汇编实现**（上游 1.8
 ## 下载
 
 `archives.boost.io` 只有 25KB/s（140MB 要 1.5 小时），`downloads.sourceforge.net/project/boost/boost/1.81.0/boost_1_81_0.tar.gz` 有 2.4MB/s。
+
+## 更新（2026-11-04）
+
+排除 context / coroutine / fiber 的 39 个静态库已全部链接进 `doris_be`，0 错误。
+再次确认 Doris BE 只用 lexical_cast / tokenizer / stacktrace / dynamic_bitset / regex 等，不用这三个库。
+Arrow 的 Parquet 构建也用这一份（`Boost_SOURCE=SYSTEM` + 环境变量 `BOOST_ROOT`）。
